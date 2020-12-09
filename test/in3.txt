@@ -1,0 +1,14 @@
+// adelkdvckl
+
+ROT SCALE IS COLOR
+
+ORGIN IS (10.2 +11,2-300); // foe eodlfo sweegd
+
+
+ROT I 20.34;
+
+- slfjkdfiod 2353d
+
+SCALE IS (1+SIN(3.2),-10*LOG2(3));
+FOR T FROM 0 TO COT(-2.3)+2.2 STEP 2 DRAW(T+E,2*PI); - plot
+COLOR IS (100,23,54);

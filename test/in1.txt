@@ -1,0 +1,11 @@
+// 设置原点的偏移量
+ORIGIN IS (10.2 +11,2-300); // 设置旋转角度ORIGIN
+
+
+ROT IS 20.34;
+
+-- 设置横坐标和纵坐标的比例
+
+SCALE IS (1+SIN(3.2),-10 * LOG10(3));
+FOR T FROM 0 TO TAN(-2.3)+2.2 STEP 2 DRAW(T+E,2*PI); -- 绘图
+COLOR IS (100,23,54);
