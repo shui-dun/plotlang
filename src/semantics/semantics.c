@@ -68,6 +68,7 @@ double solve(Node *node) {
     assert(0);
 }
 
+// 坐标经过scale&rot&origin变换后的真实坐标
 static void transform(double *xPtr, double *yPtr) {
     double x = *xPtr;
     double y = *yPtr;
@@ -157,5 +158,6 @@ int writePng(char *filename) {
     if (info_ptr != NULL) png_free_data(png_ptr, info_ptr, PNG_FREE_ALL, -1);
     if (png_ptr != NULL) png_destroy_write_struct(&png_ptr, (png_infopp) NULL);
     if (content != NULL) free(content);
+    free(lst);
     return 0;
 }

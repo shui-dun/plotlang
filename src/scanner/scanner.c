@@ -502,8 +502,15 @@ char *yytext;
 int lineNu = 1;
 FuncPtr curFunc;
 double curVal;
-#line 506 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.c"
-#line 507 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.c"
+FuncT funcList[N_FUNC] = {{sin,   "SIN"},
+                          {cos,   "COS"},
+                          {tan,   "TAN"},
+                          {exp,   "EXP"},
+                          {log,   "LOG"},
+                          {log10, "LOG10"},
+                          {sqrt,  "SQRT"}};
+#line 513 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.c"
+#line 514 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.c"
 
 #define INITIAL 0
 
@@ -720,12 +727,12 @@ YY_DECL
 		}
 
 	{
-#line 18 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 25 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 
 
-#line 21 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 28 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
  /* 翻译规则 */
-#line 729 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.c"
+#line 736 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -784,82 +791,82 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 22 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 29 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 return ORIGIN;
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 23 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 30 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 return IS;
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 24 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 31 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 return L_BRACKET;
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 25 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 32 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 return COMMA;
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 26 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 33 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 return R_BRACKET;
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 27 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 34 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 return SEMICOLON;
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 28 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 35 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 return ROT;
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 29 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 36 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 return SCALE;
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 30 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 37 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 return FOR;
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 31 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 38 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 return T;
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 32 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 39 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 return FROM;
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 33 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 40 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 return TO;
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 34 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 41 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 return STEP;
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 35 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 42 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 return DRAW;
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 36 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 43 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 return COLOR;
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 37 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 44 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 {
     curVal = atof(yytext);
     return NUMBER;
@@ -867,7 +874,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 41 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 48 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 {
     curVal = 3.141592653589793;
     return NUMBER;
@@ -875,7 +882,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 45 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 52 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 {
     curVal = 2.718281828459045;
     return NUMBER;
@@ -883,99 +890,99 @@ YY_RULE_SETUP
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 49 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 56 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 {
-    curFunc = sin;
+    curFunc = funcList[0].fp;
     return FUNC;
 }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 53 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 60 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 {
-    curFunc = cos;
+    curFunc = funcList[1].fp;
     return FUNC;
 }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 57 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 64 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 {
-    curFunc = tan;
+    curFunc = funcList[2].fp;
     return FUNC;
 }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 61 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 68 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 {
-    curFunc = exp;
+    curFunc = funcList[3].fp;
     return FUNC;
 }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 65 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 72 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 {
-    curFunc = log;
+    curFunc = funcList[4].fp;
     return FUNC;
 }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 69 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 76 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 {
-    curFunc = log10;
+    curFunc = funcList[5].fp;
     return FUNC;
 }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 73 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 80 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 {
-    curFunc = sqrt;
+    curFunc = funcList[6].fp;
     return FUNC;
 }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 77 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 84 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 return PLUS;
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 78 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 85 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 return MINUS;
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 79 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 86 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 return MULTIPLE;
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 80 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 87 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 return DIVISION;
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 81 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 88 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 return POW;
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 82 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 89 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 ;
 	YY_BREAK
 case 32:
 /* rule 32 can match eol */
 YY_RULE_SETUP
-#line 83 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 90 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 lineNu++;
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 84 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 91 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 {
     fprintf(stderr, "第%d行：未识别的记号%s\n", lineNu, yytext);
     return ERR;
@@ -983,7 +990,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 88 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 95 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 {
     fprintf(stderr, "第%d行：未识别的记号%s\n", lineNu, yytext);
     return ERR;
@@ -991,10 +998,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 92 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 99 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
 ECHO;
 	YY_BREAK
-#line 998 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.c"
+#line 1005 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1999,4 +2006,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 92 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"
+#line 99 "/mnt/d/file/code/PROJECTS/plotlang/src/scanner/scanner.l"

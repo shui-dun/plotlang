@@ -1,4 +1,4 @@
-// 设置原点的偏移量
+// 完全正确的文本
 ORIGIN IS (10.2 +11,2-300); // 设置旋转角度ORIGIN
 
 
@@ -8,4 +8,4 @@ ROT IS 20.34;
 
 SCALE IS (1+SIN(3.2),-10 * LOG10(3));
 FOR T FROM 0 TO TAN(-2.3)+2.2 STEP 2 DRAW(T+E,2*PI); -- 绘图
-COLOR IS (100,23,54);
+COLOR IS (100,23,54+E-SIN(PI));

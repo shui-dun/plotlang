@@ -1,6 +1,6 @@
 #ifndef PLOTLANG_SCANNER_H
 #define PLOTLANG_SCANNER_H
-
+#include <math.h>
 // 函数指针
 typedef double (* FuncPtr)(double);
 
@@ -31,5 +31,15 @@ extern YYSTYPE yylval;
 extern int lineNu; // 当前行号
 extern FuncPtr curFunc; // 当前记号的函数指针（如果是函数类型）
 extern double curVal; // 当前记号的数值（如果是数值类型）
+
+#define N_FUNC 7
+
+typedef struct FuncT {
+    FuncPtr fp;
+    char *s;
+} FuncT;
+
+// 函数列表
+extern FuncT funcList[N_FUNC];
 
 #endif //PLOTLANG_SCANNER_H

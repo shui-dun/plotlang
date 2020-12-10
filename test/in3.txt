@@ -1,14 +1,16 @@
-// adelkdvckl
+// 正确错误夹杂的文本
 
 ROT SCALE IS COLOR
 
-ORGIN IS (10.2 +11,2-300); // foe eodlfo sweegd
+ORIGIN IS (1.2 +1.1,2-0.3); // foe eodlfo sweegd
 
 
 ROT I 20.34;
 
-- slfjkdfiod 2353d
+COLOR IS (0,0,255);
 
-SCALE IS (1+SIN(3.2),-10*LOG2(3));
-FOR T FROM 0 TO COT(-2.3)+2.2 STEP 2 DRAW(T+E,2*PI); - plot
-COLOR IS (100,23,54);
+- slfjkdfiod
+
+SCALE IS (1+SIN(3.2),-10*FOO(3));
+
+FOR T FROM 1 TO 200 STEP 1 DRAW(T, 30*LOG(T)); - plot

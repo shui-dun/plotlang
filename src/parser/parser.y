@@ -4,21 +4,9 @@
 #include <assert.h>
 #include "scanner.h"
 #include "semantics.h"
-#define N_FUNC 7
 int yyerror(char *s);
 Node* createNode(int type,...);
 void printTree(Node *node, int indent);
-typedef struct Reflect {
-    FuncPtr fp;
-    char *s;
-} Reflect;
-Reflect reflect[N_FUNC] = {{sin,   "SIN"},
-                           {cos,   "COS"},
-                           {tan,   "TAN"},
-                           {exp,   "EXP"},
-                           {log,   "LOG"},
-                           {log10, "LOG10"},
-                           {sqrt,  "SQRT"}};
 %}
 
 %token ORIGIN IS L_BRACKET COMMA R_BRACKET SEMICOLON ROT SCALE FOR T FROM TO STEP DRAW COLOR NUMBER FUNC ERR;
@@ -41,6 +29,7 @@ ScaleStatement {
 ForStatement {
 } |
 ColorStatement {
+} | error SEMICOLON {
 }
 ;
 
@@ -128,17 +117,18 @@ L_BRACKET Expression R_BRACKET {
 FUNC L_BRACKET Expression R_BRACKET {
     $$ = createNode(FUNC, curFunc, $3);
 } | ERR {
-    yyerror("err\n");
+    yyerror("无法识别的表达式");
 }
 ;
 
 %%
+// 出现语法错误后自动调用
 int yyerror(char *s) {
-    fprintf(stderr, "第%d行出现了语法错误。", lineNu);
-    fprintf(stderr, "%s", s);
+    fprintf(stderr, "第%d行出现了语法错误：%s\n", lineNu, s);
     return 0;
 }
 
+// 创建表达式的节点
 Node* createNode(int type,...) {
     Node* node = (Node *)malloc(sizeof(Node));
     va_list args;
@@ -163,21 +153,24 @@ Node* createNode(int type,...) {
   return node;
 }
 
+// 打印n个空格
 static void printBlank(int n) {
     while (n--) {
         putchar(' ');
     }
 }
 
+// 找到与指定函数指针对应的函数名字符串
 char *findFunc(FuncPtr fp) {
     for (int i = 0; i < N_FUNC; i++) {
-        if (reflect[i].fp == fp) {
-            return reflect[i].s;
+        if (funcList[i].fp == fp) {
+            return funcList[i].s;
         }
     }
     assert(0);
 }
 
+// 打印表达式树
 void printTree(Node *node, int indent) {
     printBlank(indent);
     if (node->type == NUMBER) {

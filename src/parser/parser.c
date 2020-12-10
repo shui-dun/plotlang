@@ -73,23 +73,11 @@
 #include <assert.h>
 #include "scanner.h"
 #include "semantics.h"
-#define N_FUNC 7
 int yyerror(char *s);
 Node* createNode(int type,...);
 void printTree(Node *node, int indent);
-typedef struct Reflect {
-    FuncPtr fp;
-    char *s;
-} Reflect;
-Reflect reflect[N_FUNC] = {{sin,   "SIN"},
-                           {cos,   "COS"},
-                           {tan,   "TAN"},
-                           {exp,   "EXP"},
-                           {log,   "LOG"},
-                           {log10, "LOG10"},
-                           {sqrt,  "SQRT"}};
 
-#line 93 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
+#line 81 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -482,16 +470,16 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  2
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   176
+#define YYLAST   171
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  27
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  9
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  25
+#define YYNRULES  26
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  78
+#define YYNSTATES  80
 
 #define YYUNDEFTOK  2
 #define YYMAXUTOK   281
@@ -539,11 +527,11 @@ static const yytype_int8 yytranslate[] =
 
 #if YYDEBUG
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
-static const yytype_uint8 yyrline[] =
+static const yytype_int8 yyrline[] =
 {
-       0,    31,    31,    32,    35,    37,    39,    41,    43,    48,
-      58,    67,    77,    90,   101,   103,   106,   109,   112,   115,
-     117,   119,   122,   125,   128,   130
+       0,    19,    19,    20,    23,    25,    27,    29,    31,    32,
+      37,    47,    56,    66,    79,    90,    92,    95,    98,   101,
+     104,   106,   108,   111,   114,   117,   119
 };
 #endif
 
@@ -586,14 +574,14 @@ static const yytype_int16 yytoknum[] =
      STATE-NUM.  */
 static const yytype_int16 yypact[] =
 {
-     -22,   132,   -22,     1,     4,     9,     3,    12,   -22,   -22,
-     -22,   -22,   -22,   -22,    19,   118,    20,    24,    28,   118,
-     118,   -22,   -22,    41,   -22,   118,   118,   123,   118,   118,
-     118,     6,    56,   118,   -22,   -22,   -22,   118,   118,   118,
-     118,   118,    17,   136,    26,   118,   -22,    66,   -21,   -21,
-      -8,    -8,    -8,   118,   118,   118,    75,   -22,    85,   141,
-      37,    46,    48,   118,   118,   -22,   -22,   151,    94,    52,
-      57,   118,   -22,    47,   118,   104,    58,   -22
+     -22,   121,   -22,    -6,     4,     9,    11,     5,    12,   -22,
+     -22,   -22,   -22,   -22,   -22,   -22,    19,   128,    20,    24,
+      28,   128,   128,   -22,   -22,    41,   -22,   128,   128,   131,
+     128,   128,   128,     6,    56,   128,   -22,   -22,   -22,   128,
+     128,   128,   128,   128,    17,   120,    26,   128,   -22,    66,
+     -20,   -20,    29,    29,    29,   128,   128,   128,    75,   -22,
+      85,   136,    37,    48,    49,   128,   128,   -22,   -22,   146,
+      94,    59,    57,   128,   -22,    47,   128,   104,    58,   -22
 };
 
   /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -601,26 +589,26 @@ static const yytype_int16 yypact[] =
      means the default is an error.  */
 static const yytype_int8 yydefact[] =
 {
-       2,     0,     1,     0,     0,     0,     0,     0,     3,     4,
-       5,     6,     7,     8,     0,     0,     0,     0,     0,     0,
-       0,    14,    15,     0,    25,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,    20,    21,    10,     0,     0,     0,
-       0,     0,     0,     0,     0,     0,    23,     0,    16,    17,
-      18,    19,    22,     0,     0,     0,     0,    24,     0,     0,
-       0,     0,     0,     0,     0,     9,    11,     0,     0,     0,
-       0,     0,    13,     0,     0,     0,     0,    12
+       2,     0,     1,     0,     0,     0,     0,     0,     0,     3,
+       4,     5,     6,     7,     8,     9,     0,     0,     0,     0,
+       0,     0,     0,    15,    16,     0,    26,     0,     0,     0,
+       0,     0,     0,     0,     0,     0,    21,    22,    11,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,    24,     0,
+      17,    18,    19,    20,    23,     0,     0,     0,     0,    25,
+       0,     0,     0,     0,     0,     0,     0,    10,    12,     0,
+       0,     0,     0,     0,    14,     0,     0,     0,     0,    13
 };
 
   /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-     -22,   -22,   -22,   -22,   -22,   -22,   -22,   -22,   -19
+     -22,   -22,   -22,   -22,   -22,   -22,   -22,   -22,   -21
 };
 
   /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-      -1,     1,     8,     9,    10,    11,    12,    13,    27
+      -1,     1,     9,    10,    11,    12,    13,    14,    29
 };
 
   /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
@@ -628,76 +616,76 @@ static const yytype_int8 yydefgoto[] =
      number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_int8 yytable[] =
 {
-      31,    32,    39,    40,    41,    14,    34,    35,    15,    42,
-      43,    44,    45,    16,    47,    17,    18,    41,    48,    49,
-      50,    51,    52,    53,    19,    28,    56,    37,    38,    39,
-      40,    41,    55,    30,    58,    59,    60,    29,    37,    38,
-      39,    40,    41,    64,    67,    68,    33,    37,    38,    39,
-      40,    41,    73,    74,    65,    75,    66,    71,    37,    38,
-      39,    40,    41,    46,     0,    72,    77,     0,    37,    38,
-      39,    40,    41,    57,     0,     0,     0,    37,    38,    39,
-      40,    41,    61,     0,     0,     0,     0,    37,    38,    39,
-      40,    41,    62,     0,     0,     0,    37,    38,    39,    40,
-      41,    70,     0,     0,     0,     0,    37,    38,    39,    40,
-      41,    76,     0,     0,     0,    37,    38,    39,    40,    41,
-       0,     0,     0,    20,     0,    37,    38,    39,    40,    41,
-      21,    36,     2,     0,     0,     3,    22,    23,    24,    25,
-      26,     4,     5,     6,    37,    38,    39,    40,    41,     7,
-      54,     0,     0,     0,     0,     0,    63,    37,    38,    39,
-      40,    41,    37,    38,    39,    40,    41,    69,     0,     0,
-       0,     0,    37,    38,    39,    40,    41
+      33,    34,    15,    41,    42,    43,    36,    37,    16,    44,
+      45,    46,    47,    17,    49,    18,    20,    19,    50,    51,
+      52,    53,    54,    55,    21,    30,    58,    39,    40,    41,
+      42,    43,    57,    32,    60,    61,    62,    31,    39,    40,
+      41,    42,    43,    66,    69,    70,    35,    39,    40,    41,
+      42,    43,    75,    76,    43,    77,    67,    68,    39,    40,
+      41,    42,    43,    48,    73,    74,    79,     0,    39,    40,
+      41,    42,    43,    59,     0,     0,     0,    39,    40,    41,
+      42,    43,    63,     0,     0,     0,     0,    39,    40,    41,
+      42,    43,    64,     0,     0,     0,    39,    40,    41,    42,
+      43,    72,     0,     0,     0,     0,    39,    40,    41,    42,
+      43,    78,     0,     0,     0,    39,    40,    41,    42,    43,
+       0,     2,     3,     0,     4,    39,    40,    41,    42,    43,
+       5,     6,     7,    22,    56,     0,     0,     0,     8,    38,
+      23,    39,    40,    41,    42,    43,    24,    25,    26,    27,
+      28,    65,    39,    40,    41,    42,    43,    39,    40,    41,
+      42,    43,    71,     0,     0,     0,     0,    39,    40,    41,
+      42,    43
 };
 
 static const yytype_int8 yycheck[] =
 {
-      19,    20,    23,    24,    25,     4,    25,    26,     4,    28,
-      29,    30,     6,     4,    33,    12,     4,    25,    37,    38,
-      39,    40,    41,     6,     5,     5,    45,    21,    22,    23,
-      24,    25,     6,     5,    53,    54,    55,    13,    21,    22,
-      23,    24,    25,     6,    63,    64,     5,    21,    22,    23,
-      24,    25,    71,     6,     8,    74,     8,     5,    21,    22,
-      23,    24,    25,     7,    -1,     8,     8,    -1,    21,    22,
+      21,    22,     8,    23,    24,    25,    27,    28,     4,    30,
+      31,    32,     6,     4,    35,     4,     4,    12,    39,    40,
+      41,    42,    43,     6,     5,     5,    47,    21,    22,    23,
+      24,    25,     6,     5,    55,    56,    57,    13,    21,    22,
+      23,    24,    25,     6,    65,    66,     5,    21,    22,    23,
+      24,    25,    73,     6,    25,    76,     8,     8,    21,    22,
+      23,    24,    25,     7,     5,     8,     8,    -1,    21,    22,
       23,    24,    25,     7,    -1,    -1,    -1,    21,    22,    23,
       24,    25,     7,    -1,    -1,    -1,    -1,    21,    22,    23,
       24,    25,     7,    -1,    -1,    -1,    21,    22,    23,    24,
       25,     7,    -1,    -1,    -1,    -1,    21,    22,    23,    24,
       25,     7,    -1,    -1,    -1,    21,    22,    23,    24,    25,
-      -1,    -1,    -1,     5,    -1,    21,    22,    23,    24,    25,
-      12,     8,     0,    -1,    -1,     3,    18,    19,    20,    21,
-      22,     9,    10,    11,    21,    22,    23,    24,    25,    17,
-      14,    -1,    -1,    -1,    -1,    -1,    15,    21,    22,    23,
-      24,    25,    21,    22,    23,    24,    25,    16,    -1,    -1,
-      -1,    -1,    21,    22,    23,    24,    25
+      -1,     0,     1,    -1,     3,    21,    22,    23,    24,    25,
+       9,    10,    11,     5,    14,    -1,    -1,    -1,    17,     8,
+      12,    21,    22,    23,    24,    25,    18,    19,    20,    21,
+      22,    15,    21,    22,    23,    24,    25,    21,    22,    23,
+      24,    25,    16,    -1,    -1,    -1,    -1,    21,    22,    23,
+      24,    25
 };
 
   /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
      symbol of state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,    28,     0,     3,     9,    10,    11,    17,    29,    30,
-      31,    32,    33,    34,     4,     4,     4,    12,     4,     5,
-       5,    12,    18,    19,    20,    21,    22,    35,     5,    13,
-       5,    35,    35,     5,    35,    35,     8,    21,    22,    23,
-      24,    25,    35,    35,    35,     6,     7,    35,    35,    35,
-      35,    35,    35,     6,    14,     6,    35,     7,    35,    35,
-      35,     7,     7,    15,     6,     8,     8,    35,    35,    16,
-       7,     5,     8,    35,     6,    35,     7,     8
+       0,    28,     0,     1,     3,     9,    10,    11,    17,    29,
+      30,    31,    32,    33,    34,     8,     4,     4,     4,    12,
+       4,     5,     5,    12,    18,    19,    20,    21,    22,    35,
+       5,    13,     5,    35,    35,     5,    35,    35,     8,    21,
+      22,    23,    24,    25,    35,    35,    35,     6,     7,    35,
+      35,    35,    35,    35,    35,     6,    14,     6,    35,     7,
+      35,    35,    35,     7,     7,    15,     6,     8,     8,    35,
+      35,    16,     7,     5,     8,    35,     6,    35,     7,     8
 };
 
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_int8 yyr1[] =
 {
-       0,    27,    28,    28,    29,    29,    29,    29,    29,    30,
-      31,    32,    33,    34,    35,    35,    35,    35,    35,    35,
-      35,    35,    35,    35,    35,    35
+       0,    27,    28,    28,    29,    29,    29,    29,    29,    29,
+      30,    31,    32,    33,    34,    35,    35,    35,    35,    35,
+      35,    35,    35,    35,    35,    35,    35
 };
 
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
 static const yytype_int8 yyr2[] =
 {
-       0,     2,     0,     2,     1,     1,     1,     1,     1,     8,
-       4,     8,    15,    10,     1,     1,     3,     3,     3,     3,
-       2,     2,     3,     3,     4,     1
+       0,     2,     0,     2,     1,     1,     1,     1,     1,     2,
+       8,     4,     8,    15,    10,     1,     1,     3,     3,     3,
+       3,     2,     2,     3,     3,     4,     1
 };
 
 
@@ -1393,56 +1381,63 @@ yyreduce:
   switch (yyn)
     {
   case 2:
-#line 31 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
+#line 19 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
            {
 }
-#line 1400 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
+#line 1388 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
     break;
 
   case 3:
-#line 32 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
+#line 20 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
                       {
 }
-#line 1407 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
+#line 1395 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
     break;
 
   case 4:
-#line 35 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
+#line 23 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
                             {
 }
-#line 1414 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
+#line 1402 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
     break;
 
   case 5:
-#line 37 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
+#line 25 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
              {
 }
-#line 1421 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
+#line 1409 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
     break;
 
   case 6:
-#line 39 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
+#line 27 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
                {
 }
-#line 1428 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
+#line 1416 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
     break;
 
   case 7:
-#line 41 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
+#line 29 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
              {
 }
-#line 1435 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
+#line 1423 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
     break;
 
   case 8:
-#line 43 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
+#line 31 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
                {
 }
-#line 1442 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
+#line 1430 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
     break;
 
   case 9:
-#line 48 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
+#line 32 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
+                    {
+}
+#line 1437 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
+    break;
+
+  case 10:
+#line 37 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
                                                                     {
     printf("enter ORIGIN statement\n");
     printTree(yyvsp[-4], 4);
@@ -1450,22 +1445,22 @@ yyreduce:
     origin(yyvsp[-4], yyvsp[-2]);
     printf("exit ORIGIN statement\n");
 }
-#line 1454 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
+#line 1449 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
     break;
 
-  case 10:
-#line 58 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
+  case 11:
+#line 47 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
                             {
     printf("enter ROT statement\n");
     printTree(yyvsp[-1], 4);
     rot(yyvsp[-1]);
     printf("exit ROT statement\n");
 }
-#line 1465 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
+#line 1460 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
     break;
 
-  case 11:
-#line 67 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
+  case 12:
+#line 56 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
                                                                    {
     printf("enter SCALE statement\n");
     printTree(yyvsp[-4], 4);
@@ -1473,11 +1468,11 @@ yyreduce:
     scale(yyvsp[-4], yyvsp[-2]);
     printf("exit SCALE statement\n");
 }
-#line 1477 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
+#line 1472 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
     break;
 
-  case 12:
-#line 77 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
+  case 13:
+#line 66 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
                                                                                                                    {
     printf("enter FOR statement\n");
     printTree(yyvsp[-11], 4);
@@ -1488,11 +1483,11 @@ yyreduce:
     draw(yyvsp[-11], yyvsp[-9], yyvsp[-7], yyvsp[-4], yyvsp[-2]);
     printf("exit FOR statement\n");
 }
-#line 1492 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
+#line 1487 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
     break;
 
-  case 13:
-#line 90 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
+  case 14:
+#line 79 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
                                                                                     {
     printf("enter COLOR statement\n");
     printTree(yyvsp[-6], 4);
@@ -1501,107 +1496,107 @@ yyreduce:
     color(yyvsp[-6], yyvsp[-4], yyvsp[-2]);
     printf("exit COLOR statement\n");
 }
-#line 1505 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
-    break;
-
-  case 14:
-#line 101 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
-  {
-    yyval = createNode(T);
-}
-#line 1513 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
+#line 1500 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
     break;
 
   case 15:
-#line 103 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
-           {
-    yyval = createNode(NUMBER, curVal);
+#line 90 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
+  {
+    yyval = createNode(T);
 }
-#line 1521 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
+#line 1508 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
     break;
 
   case 16:
-#line 106 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
-                           {
-    yyval = createNode(PLUS, yyvsp[-2], yyvsp[0]);
+#line 92 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
+           {
+    yyval = createNode(NUMBER, curVal);
 }
-#line 1529 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
+#line 1516 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
     break;
 
   case 17:
-#line 109 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
-                            {
-    yyval = createNode(MINUS, yyvsp[-2], yyvsp[0]);
+#line 95 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
+                           {
+    yyval = createNode(PLUS, yyvsp[-2], yyvsp[0]);
 }
-#line 1537 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
+#line 1524 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
     break;
 
   case 18:
-#line 112 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
-                               {
-    yyval = createNode(MULTIPLE, yyvsp[-2], yyvsp[0]);
+#line 98 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
+                            {
+    yyval = createNode(MINUS, yyvsp[-2], yyvsp[0]);
 }
-#line 1545 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
+#line 1532 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
     break;
 
   case 19:
-#line 115 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
+#line 101 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
                                {
-    yyval = createNode(DIVISION, yyvsp[-2], yyvsp[0]);
+    yyval = createNode(MULTIPLE, yyvsp[-2], yyvsp[0]);
 }
-#line 1553 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
+#line 1540 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
     break;
 
   case 20:
-#line 117 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
+#line 104 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
                                {
-    yyval = yyvsp[0];
+    yyval = createNode(DIVISION, yyvsp[-2], yyvsp[0]);
 }
-#line 1561 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
+#line 1548 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
     break;
 
   case 21:
-#line 119 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
-                                {
-    yyval = createNode(MINUS, createNode(NUMBER, 0.0), yyvsp[0]);
+#line 106 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
+                               {
+    yyval = yyvsp[0];
 }
-#line 1569 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
+#line 1556 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
     break;
 
   case 22:
-#line 122 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
-                          {
-    yyval = createNode(POW, yyvsp[-2], yyvsp[0]);
+#line 108 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
+                                {
+    yyval = createNode(MINUS, createNode(NUMBER, 0.0), yyvsp[0]);
 }
-#line 1577 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
+#line 1564 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
     break;
 
   case 23:
-#line 125 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
-                               {
-    yyval = yyvsp[-1];
+#line 111 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
+                          {
+    yyval = createNode(POW, yyvsp[-2], yyvsp[0]);
 }
-#line 1585 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
+#line 1572 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
     break;
 
   case 24:
-#line 128 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
-                                    {
-    yyval = createNode(FUNC, curFunc, yyvsp[-1]);
+#line 114 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
+                               {
+    yyval = yyvsp[-1];
 }
-#line 1593 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
+#line 1580 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
     break;
 
   case 25:
-#line 130 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
-        {
-    yyerror("err\n");
+#line 117 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
+                                    {
+    yyval = createNode(FUNC, curFunc, yyvsp[-1]);
 }
-#line 1601 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
+#line 1588 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
+    break;
+
+  case 26:
+#line 119 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
+        {
+    yyerror("无法识别的表达式");
+}
+#line 1596 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
     break;
 
 
-#line 1605 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
+#line 1600 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.c"
 
       default: break;
     }
@@ -1833,14 +1828,15 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 135 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
+#line 124 "/mnt/d/file/code/PROJECTS/plotlang/src/parser/parser.y"
 
+// 出现语法错误后自动调用
 int yyerror(char *s) {
-    fprintf(stderr, "第%d行出现了语法错误。", lineNu);
-    fprintf(stderr, "%s", s);
+    fprintf(stderr, "第%d行出现了语法错误：%s\n", lineNu, s);
     return 0;
 }
 
+// 创建表达式的节点
 Node* createNode(int type,...) {
     Node* node = (Node *)malloc(sizeof(Node));
     va_list args;
@@ -1865,21 +1861,24 @@ Node* createNode(int type,...) {
   return node;
 }
 
+// 打印n个空格
 static void printBlank(int n) {
     while (n--) {
         putchar(' ');
     }
 }
 
+// 找到与指定函数指针对应的函数名字符串
 char *findFunc(FuncPtr fp) {
     for (int i = 0; i < N_FUNC; i++) {
-        if (reflect[i].fp == fp) {
-            return reflect[i].s;
+        if (funcList[i].fp == fp) {
+            return funcList[i].s;
         }
     }
     assert(0);
 }
 
+// 打印表达式树
 void printTree(Node *node, int indent) {
     printBlank(indent);
     if (node->type == NUMBER) {

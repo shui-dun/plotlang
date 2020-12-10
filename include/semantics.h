@@ -22,7 +22,7 @@ void scale(Node *x, Node *y);
 // color的语义函数
 void color(Node *r, Node *g, Node *b);
 
-// 解出节点的数值
+// 解出表达式树的数值
 double solve(Node *node);
 
 // draw的语义函数

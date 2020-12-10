@@ -9,7 +9,6 @@
  * 函数绘图语言解释器 主函数
  */
 int main(int argc, char *argv[]) {
-    system("ls");
     if (argc != 2) {
         printf("请指定源代码文件路径\n");
         return 1;

@@ -14,7 +14,7 @@ find_package(FLEX)
 FLEX_TARGET(myScanner ${CMAKE_CURRENT_SOURCE_DIR}/scanner/scanner.l
         ${CMAKE_CURRENT_SOURCE_DIR}/scanner/scanner.c)
 add_library(scanner SHARED ${FLEX_myScanner_OUTPUTS})
-target_link_libraries(scanner m)
+target_link_libraries(parser m)
 
 aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR} SRC_LIST)
 add_executable(plotlang ${SRC_LIST})

@@ -7,6 +7,13 @@
 int lineNu = 1;
 FuncPtr curFunc;
 double curVal;
+FuncT funcList[N_FUNC] = {{sin,   "SIN"},
+                          {cos,   "COS"},
+                          {tan,   "TAN"},
+                          {exp,   "EXP"},
+                          {log,   "LOG"},
+                          {log10, "LOG10"},
+                          {sqrt,  "SQRT"}};
 %}
 
 digit [0-9]+
@@ -46,31 +53,31 @@ str [a-zA-Z_][a-zA-Z0-9_]*
     return NUMBER;
 }
 "SIN" {
-    curFunc = sin;
+    curFunc = funcList[0].fp;
     return FUNC;
 }
 "COS" {
-    curFunc = cos;
+    curFunc = funcList[1].fp;
     return FUNC;
 }
 "TAN" {
-    curFunc = tan;
+    curFunc = funcList[2].fp;
     return FUNC;
 }
 "EXP" {
-    curFunc = exp;
+    curFunc = funcList[3].fp;
     return FUNC;
 }
 "LOG" {
-    curFunc = log;
+    curFunc = funcList[4].fp;
     return FUNC;
 }
 "LOG10" {
-    curFunc = log10;
+    curFunc = funcList[5].fp;
     return FUNC;
 }
 "SQRT" {
-    curFunc = sqrt;
+    curFunc = funcList[6].fp;
     return FUNC;
 }
 "+" return PLUS;
